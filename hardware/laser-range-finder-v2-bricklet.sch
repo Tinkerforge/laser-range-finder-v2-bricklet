@@ -1,33 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
 LIBS:tinkerforge
 LIBS:laser-range-finder-v2-bricklet-cache
 EELAYER 25 0
@@ -121,23 +92,23 @@ $EndComp
 $Comp
 L C C2
 U 1 1 5B5B1DF2
-P 2150 1300
-F 0 "C2" H 2200 1400 50  0000 L CNN
-F 1 "10uF" H 2200 1200 50  0000 L CNN
-F 2 "C0402E" H 2150 1300 60  0001 C CNN
-F 3 "" H 2150 1300 60  0000 C CNN
-	1    2150 1300
+P 2150 1250
+F 0 "C2" H 2200 1350 50  0000 L CNN
+F 1 "10uF" H 2200 1150 50  0000 L CNN
+F 2 "C0402E" H 2150 1250 60  0001 C CNN
+F 3 "" H 2150 1250 60  0000 C CNN
+	1    2150 1250
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C3
 U 1 1 5B5B1E37
-P 2550 1300
-F 0 "C3" H 2600 1400 50  0000 L CNN
-F 1 "1uF" H 2600 1200 50  0000 L CNN
-F 2 "C0402E" H 2550 1300 60  0001 C CNN
-F 3 "" H 2550 1300 60  0000 C CNN
-	1    2550 1300
+P 2550 1250
+F 0 "C3" H 2600 1350 50  0000 L CNN
+F 1 "1uF" H 2600 1150 50  0000 L CNN
+F 2 "C0402E" H 2550 1250 60  0001 C CNN
+F 3 "" H 2550 1250 60  0000 C CNN
+	1    2550 1250
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -256,10 +227,10 @@ U 1 1 5B62CAB2
 P 7050 1700
 F 0 "L1" V 7000 1700 50  0000 C CNN
 F 1 "FB-2" V 7150 1700 50  0000 C CNN
-F 2 "0603" H 7050 1700 50  0001 C CNN
+F 2 "R0603E" H 7050 1700 50  0001 C CNN
 F 3 "" H 7050 1700 50  0000 C CNN
 	1    7050 1700
-	0    1    1    0   
+	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR06
@@ -366,7 +337,7 @@ F 1 "BLUE" H 2050 3000 50  0000 C CNN
 F 2 "D0603F" H 2050 3100 50  0001 C CNN
 F 3 "" H 2050 3100 50  0000 C CNN
 	1    2050 3100
-	-1   0    0    1   
+	1    0    0    -1  
 $EndComp
 $Comp
 L 3V3 #PWR013
@@ -423,8 +394,6 @@ Wire Wire Line
 	2500 1950 3050 1950
 Connection ~ 1800 2050
 Wire Wire Line
-	1800 2400 1800 2500
-Wire Wire Line
 	1100 2200 1100 2500
 Wire Wire Line
 	1600 900  1600 1450
@@ -432,10 +401,6 @@ Wire Wire Line
 	1600 1450 1450 1450
 Wire Wire Line
 	1450 1550 2600 1550
-Wire Wire Line
-	2150 1450 2150 1550
-Wire Wire Line
-	2550 1450 2550 1550
 Connection ~ 2150 1550
 Wire Wire Line
 	1450 1750 2100 1750
@@ -451,28 +416,14 @@ Wire Wire Line
 	1950 1650 1950 950 
 Wire Wire Line
 	1950 950  2550 950 
-Wire Wire Line
-	2150 950  2150 1150
 Connection ~ 2150 950 
 Wire Wire Line
 	2600 1550 2600 1600
 Connection ~ 2550 1550
 Wire Wire Line
-	6500 2400 6500 2100
-Wire Wire Line
-	7600 2100 7600 2400
-Wire Wire Line
-	8150 2400 8150 2100
-Wire Wire Line
-	8150 1800 8150 1700
-Wire Wire Line
 	7350 1700 9750 1700
 Wire Wire Line
 	6750 1700 6500 1700
-Wire Wire Line
-	6500 1550 6500 1800
-Wire Wire Line
-	7600 1800 7600 1700
 Connection ~ 7600 1700
 Connection ~ 8150 1700
 Connection ~ 6500 1700
@@ -487,10 +438,6 @@ Wire Wire Line
 	9750 2200 9650 2200
 Wire Wire Line
 	9650 2200 9650 2400
-Wire Wire Line
-	3400 6550 3400 6800
-Wire Wire Line
-	3400 7100 3400 7450
 Wire Wire Line
 	3400 7200 3600 7200
 Connection ~ 3400 7200
@@ -524,10 +471,6 @@ Wire Wire Line
 	3600 3800 3250 3800
 Wire Wire Line
 	3250 3900 3600 3900
-Wire Wire Line
-	1800 2100 1800 2050
-Wire Wire Line
-	2550 850  2550 1150
 $Comp
 L R_PACK4 RP3
 U 1 1 5B62FA37
@@ -572,23 +515,23 @@ ENABLE
 $Comp
 L R R1
 U 1 1 5B630290
-P 2750 5650
-F 0 "R1" V 2830 5650 50  0000 C CNN
-F 1 "1k" V 2750 5650 50  0000 C CNN
-F 2 "R0603E" V 2680 5650 50  0001 C CNN
-F 3 "" H 2750 5650 50  0000 C CNN
-	1    2750 5650
+P 2750 5750
+F 0 "R1" V 2830 5750 50  0000 C CNN
+F 1 "1k" V 2750 5750 50  0000 C CNN
+F 2 "R0603E" V 2680 5750 50  0001 C CNN
+F 3 "" H 2750 5750 50  0000 C CNN
+	1    2750 5750
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR016
 U 1 1 5B63030B
-P 2750 5800
-F 0 "#PWR016" H 2750 5550 50  0001 C CNN
-F 1 "GND" H 2750 5650 50  0000 C CNN
-F 2 "" H 2750 5800 50  0000 C CNN
-F 3 "" H 2750 5800 50  0000 C CNN
-	1    2750 5800
+P 2750 6150
+F 0 "#PWR016" H 2750 5900 50  0001 C CNN
+F 1 "GND" H 2750 6050 50  0000 C CNN
+F 2 "" H 2750 6150 50  0000 C CNN
+F 3 "" H 2750 6150 50  0000 C CNN
+	1    2750 6150
 	1    0    0    -1  
 $EndComp
 Connection ~ 2750 5500
@@ -636,8 +579,6 @@ F 3 "" H 1500 4300 60  0000 C CNN
 	1    1500 4300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1500 4450 1500 4300
 $Comp
 L LED D2
 U 1 1 5B63192B
@@ -647,7 +588,7 @@ F 1 "GREEN" H 2050 4350 50  0000 C CNN
 F 2 "D0603F" H 2050 4450 50  0001 C CNN
 F 3 "" H 2050 4450 50  0000 C CNN
 	1    2050 4450
-	-1   0    0    -1  
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	1850 4450 1500 4450
@@ -726,4 +667,37 @@ F 3 "" H 10750 6200 60  0000 C CNN
 	1    10750 6200
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2150 950  2150 1050
+Wire Wire Line
+	2550 850  2550 1050
+Wire Wire Line
+	2150 1450 2150 1550
+Wire Wire Line
+	2550 1550 2550 1450
+Wire Wire Line
+	2750 6150 2750 6000
+Wire Wire Line
+	3400 7200 3400 7150
+Wire Wire Line
+	3400 6550 3400 6750
+Wire Wire Line
+	3400 7300 3400 7450
+Wire Wire Line
+	6500 2150 6500 2400
+Wire Wire Line
+	7600 1750 7600 1700
+Wire Wire Line
+	7600 2150 7600 2400
+Wire Wire Line
+	8150 1750 8150 1700
+Wire Wire Line
+	8150 2150 8150 2400
+Wire Wire Line
+	1800 2500 1800 2450
+Wire Wire Line
+	6500 1550 6500 1750
+Wire Wire Line
+	1500 4450 1500 4300
+NoConn ~ 3600 3500
 $EndSCHEMATC
