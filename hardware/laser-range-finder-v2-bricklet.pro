@@ -1,4 +1,4 @@
-update=Mi 08 Aug 2018 15:18:22 CEST
+update=Mi 08 Aug 2018 17:50:02 CEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,10 +23,8 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
-[eeschema]
-version=1
-LibDir=../../kicad-libraries
-[eeschema/libraries]
-LibName1=tinkerforge
 [general]
 version=1
+[eeschema]
+version=1
+LibDir=
