@@ -1,21 +1,20 @@
 EESchema Schematic File Version 4
-LIBS:laser-range-finder-v2-bricklet-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
-Comment1 ""
-Comment2 ""
+Title "Laser Range Finder Bricklet 2.0"
+Date "2018-09-04"
+Rev "2.0"
+Comp "Tinkerforge GmbH"
+Comment1 "Licensed under CERN OHL v.1.1"
+Comment2 "Copyright (©) 2018, T.Schneidermann <tim@tinkerforge.com>"
 Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L laser-range-finder-v2-bricklet-rescue:CON-SENSOR2 P1
+L tinkerforge:CON-SENSOR2 P1
 U 1 1 5B5B0B02
 P 1100 1750
 F 0 "P1" H 950 2150 60  0000 C CNN
@@ -26,7 +25,7 @@ F 3 "" H 1200 1600 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:R_PACK4 RP1
+L tinkerforge:R_PACK4 RP1
 U 1 1 5B5B1A4C
 P 2300 1700
 F 0 "RP1" H 2300 2150 50  0000 C CNN
@@ -45,7 +44,7 @@ S-MOSI
 Text GLabel 3050 2050 2    47   Input ~ 0
 S-MISO
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C1
+L tinkerforge:C C1
 U 1 1 5B5B1CC1
 P 1800 2250
 F 0 "C1" H 1850 2350 50  0000 L CNN
@@ -56,7 +55,7 @@ F 3 "" H 1800 2250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR01
+L tinkerforge:GND #PWR01
 U 1 1 5B5B1D24
 P 1800 2500
 F 0 "#PWR01" H 1800 2500 30  0001 C CNN
@@ -67,7 +66,7 @@ F 3 "" H 1800 2500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR02
+L tinkerforge:GND #PWR02
 U 1 1 5B5B1D64
 P 1100 2500
 F 0 "#PWR02" H 1100 2500 30  0001 C CNN
@@ -78,7 +77,7 @@ F 3 "" H 1100 2500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:+5V #PWR03
+L tinkerforge:+5V #PWR03
 U 1 1 5B5B1DC0
 P 1600 900
 F 0 "#PWR03" H 1600 750 50  0001 C CNN
@@ -89,7 +88,7 @@ F 3 "" H 1600 900 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C2
+L tinkerforge:C C2
 U 1 1 5B5B1DF2
 P 2150 1250
 F 0 "C2" H 2200 1350 50  0000 L CNN
@@ -100,7 +99,7 @@ F 3 "" H 2150 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C3
+L tinkerforge:C C3
 U 1 1 5B5B1E37
 P 2550 1250
 F 0 "C3" H 2600 1350 50  0000 L CNN
@@ -111,7 +110,7 @@ F 3 "" H 2550 1250 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:3V3 #PWR04
+L tinkerforge:3V3 #PWR04
 U 1 1 5B5B1FD2
 P 2550 850
 F 0 "#PWR04" H 2550 950 40  0001 C CNN
@@ -122,7 +121,7 @@ F 3 "" H 2550 850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR05
+L tinkerforge:GND #PWR05
 U 1 1 5B5B2027
 P 2600 1600
 F 0 "#PWR05" H 2600 1600 30  0001 C CNN
@@ -133,7 +132,7 @@ F 3 "" H 2600 1600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:XMC1XXX24 U1
+L tinkerforge:XMC1XXX24 U1
 U 1 1 5B5B218B
 P 3950 7000
 F 0 "U1" H 3950 7450 60  0000 C CNN
@@ -144,7 +143,7 @@ F 3 "" H 4100 7750 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:XMC1XXX24 U1
+L tinkerforge:XMC1XXX24 U1
 U 2 1 5B5B2270
 P 3950 3450
 F 0 "U1" H 3950 4050 60  0000 C CNN
@@ -155,7 +154,7 @@ F 3 "" H 4100 4200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:XMC1XXX24 U1
+L tinkerforge:XMC1XXX24 U1
 U 3 1 5B5B22BE
 P 3950 4650
 F 0 "U1" H 3950 4950 60  0000 C CNN
@@ -166,7 +165,7 @@ F 3 "" H 4100 5400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:XMC1XXX24 U1
+L tinkerforge:XMC1XXX24 U1
 U 4 1 5B5B2343
 P 3950 5750
 F 0 "U1" H 3950 6250 60  0000 C CNN
@@ -177,7 +176,7 @@ F 3 "" H 4100 6500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C6
+L tinkerforge:C C6
 U 1 1 5B62C94F
 P 7600 1950
 F 0 "C6" H 7625 2050 50  0000 L CNN
@@ -188,7 +187,7 @@ F 3 "" H 7600 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C5
+L tinkerforge:C C5
 U 1 1 5B62C9E0
 P 6500 1950
 F 0 "C5" H 6525 2050 50  0000 L CNN
@@ -199,7 +198,7 @@ F 3 "" H 6500 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:CP1 C7
+L tinkerforge:CP1 C7
 U 1 1 5B62CA57
 P 8150 1950
 F 0 "C7" H 8175 2050 50  0000 L CNN
@@ -210,18 +209,18 @@ F 3 "" H 8150 1950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:INDUCTOR L1
+L tinkerforge:INDUCTOR L1
 U 1 1 5B62CAB2
 P 7050 1700
-F 0 "L1" V 7000 1700 50  0000 C CNN
-F 1 "FB-2" V 7150 1700 50  0000 C CNN
+F 0 "L1" H 7000 1850 50  0000 C CNN
+F 1 "FB-2" H 7050 1650 50  0000 C CNN
 F 2 "R0603E" H 7050 1700 50  0001 C CNN
 F 3 "" H 7050 1700 50  0000 C CNN
 	1    7050 1700
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR06
+L tinkerforge:GND #PWR06
 U 1 1 5B62CD4D
 P 6500 2400
 F 0 "#PWR06" H 6500 2150 50  0001 C CNN
@@ -232,7 +231,7 @@ F 3 "" H 6500 2400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR07
+L tinkerforge:GND #PWR07
 U 1 1 5B62CD7D
 P 7600 2400
 F 0 "#PWR07" H 7600 2150 50  0001 C CNN
@@ -243,7 +242,7 @@ F 3 "" H 7600 2400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR08
+L tinkerforge:GND #PWR08
 U 1 1 5B62CDAD
 P 8150 2400
 F 0 "#PWR08" H 8150 2150 50  0001 C CNN
@@ -254,7 +253,7 @@ F 3 "" H 8150 2400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:+5V #PWR09
+L tinkerforge:+5V #PWR09
 U 1 1 5B62CF98
 P 6500 1550
 F 0 "#PWR09" H 6500 1400 50  0001 C CNN
@@ -271,7 +270,7 @@ SCL
 Text GLabel 8750 2100 0    47   Input ~ 0
 SDA
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR010
+L tinkerforge:GND #PWR010
 U 1 1 5B62D49D
 P 9650 2650
 F 0 "#PWR010" H 9650 2400 50  0001 C CNN
@@ -282,7 +281,7 @@ F 3 "" H 9650 2650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR011
+L tinkerforge:GND #PWR011
 U 1 1 5B62D981
 P 3400 7450
 F 0 "#PWR011" H 3400 7200 50  0001 C CNN
@@ -293,7 +292,7 @@ F 3 "" H 3400 7450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:3V3 #PWR012
+L tinkerforge:3V3 #PWR012
 U 1 1 5B62D9DC
 P 3400 6550
 F 0 "#PWR012" H 3400 6650 40  0001 C CNN
@@ -304,7 +303,7 @@ F 3 "" H 3400 6550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:C C4
+L tinkerforge:C C4
 U 1 1 5B62DA0C
 P 3400 6950
 F 0 "C4" H 3425 7050 50  0000 L CNN
@@ -317,7 +316,7 @@ $EndComp
 Text GLabel 3300 5400 0    47   Output ~ 0
 S-MISO
 $Comp
-L laser-range-finder-v2-bricklet-rescue:LED D1
+L tinkerforge:LED D1
 U 1 1 5B62E369
 P 2050 3100
 F 0 "D1" H 2050 3200 50  0000 C CNN
@@ -328,7 +327,7 @@ F 3 "" H 2050 3100 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:3V3 #PWR013
+L tinkerforge:3V3 #PWR013
 U 1 1 5B62E43D
 P 1500 3000
 F 0 "#PWR013" H 1500 3100 40  0001 C CNN
@@ -339,7 +338,7 @@ F 3 "" H 1500 3000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:CONN_01X02 P3
+L tinkerforge:CONN_01X02 P3
 U 1 1 5B62E89C
 P 3150 4650
 F 0 "P3" H 3150 4800 50  0000 C CNN
@@ -350,7 +349,7 @@ F 3 "" H 3150 4650 50  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR014
+L tinkerforge:GND #PWR014
 U 1 1 5B62E929
 P 3400 4900
 F 0 "#PWR014" H 3400 4650 50  0001 C CNN
@@ -458,11 +457,11 @@ Wire Wire Line
 Wire Wire Line
 	3250 3900 3600 3900
 $Comp
-L laser-range-finder-v2-bricklet-rescue:R_PACK4 RP3
+L tinkerforge:R_PACK4 RP3
 U 1 1 5B62FA37
 P 8900 2500
 F 0 "RP3" H 8900 2950 50  0000 C CNN
-F 1 "4k7" H 8900 2450 50  0000 C CNN
+F 1 "1k" H 8900 2450 50  0000 C CNN
 F 2 "4X0603" H 8900 2500 50  0001 C CNN
 F 3 "" H 8900 2500 50  0000 C CNN
 	1    8900 2500
@@ -475,7 +474,7 @@ Wire Wire Line
 	9250 2300 9250 2100
 Connection ~ 9250 2100
 $Comp
-L laser-range-finder-v2-bricklet-rescue:3V3 #PWR015
+L tinkerforge:3V3 #PWR015
 U 1 1 5B62FBF1
 P 9100 2950
 F 0 "#PWR015" H 9100 3050 40  0001 C CNN
@@ -488,18 +487,15 @@ $EndComp
 Wire Wire Line
 	8950 2700 8950 2950
 Wire Wire Line
-	8950 2950 9100 2950
-Wire Wire Line
 	9250 2950 9250 2700
-Connection ~ 9100 2950
 NoConn ~ 9050 2300
 NoConn ~ 9150 2300
 NoConn ~ 9150 2700
 NoConn ~ 9050 2700
-Text GLabel 2600 5500 0    47   Input ~ 0
+Text GLabel 2600 5500 0    47   Output ~ 0
 ENABLE
 $Comp
-L laser-range-finder-v2-bricklet-rescue:R R1
+L tinkerforge:R R1
 U 1 1 5B630290
 P 2750 5750
 F 0 "R1" V 2830 5750 50  0000 C CNN
@@ -510,7 +506,7 @@ F 3 "" H 2750 5750 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:GND #PWR016
+L tinkerforge:GND #PWR016
 U 1 1 5B63030B
 P 2750 6150
 F 0 "#PWR016" H 2750 5900 50  0001 C CNN
@@ -540,7 +536,7 @@ NoConn ~ 3600 6000
 NoConn ~ 3600 6100
 NoConn ~ 9900 3900
 $Comp
-L laser-range-finder-v2-bricklet-rescue:CONN_01X01 P2
+L tinkerforge:CONN_01X01 P2
 U 1 1 5B62EAFF
 P 3000 2850
 F 0 "P2" H 3000 2950 50  0000 C CNN
@@ -555,7 +551,7 @@ Wire Wire Line
 Wire Wire Line
 	3300 2850 3200 2850
 $Comp
-L laser-range-finder-v2-bricklet-rescue:3V3 #PWR017
+L tinkerforge:3V3 #PWR017
 U 1 1 5B631B35
 P 1500 4300
 F 0 "#PWR017" H 1500 4400 40  0001 C CNN
@@ -566,7 +562,7 @@ F 3 "" H 1500 4300 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:LED D2
+L tinkerforge:LED D2
 U 1 1 5B63192B
 P 2050 4450
 F 0 "D2" H 2050 4550 50  0000 C CNN
@@ -579,7 +575,7 @@ $EndComp
 Wire Wire Line
 	1850 4450 1500 4450
 $Comp
-L laser-range-finder-v2-bricklet-rescue:R_PACK4 RP2
+L tinkerforge:R_PACK4 RP2
 U 1 1 5B633639
 P 2500 3950
 F 0 "RP2" H 2500 4400 50  0000 C CNN
@@ -610,7 +606,7 @@ Wire Wire Line
 Wire Wire Line
 	2300 4450 2250 4450
 $Comp
-L laser-range-finder-v2-bricklet-rescue:DRILL U5
+L tinkerforge:DRILL U5
 U 1 1 5B633E5A
 P 11050 6400
 F 0 "U5" H 11100 6450 60  0001 C CNN
@@ -621,7 +617,7 @@ F 3 "" H 11050 6400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:DRILL U3
+L tinkerforge:DRILL U3
 U 1 1 5B633F4A
 P 10750 6400
 F 0 "U3" H 10800 6450 60  0001 C CNN
@@ -632,7 +628,7 @@ F 3 "" H 10750 6400 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:DRILL U4
+L tinkerforge:DRILL U4
 U 1 1 5B633F8A
 P 11050 6200
 F 0 "U4" H 11100 6250 60  0001 C CNN
@@ -643,7 +639,7 @@ F 3 "" H 11050 6200 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L laser-range-finder-v2-bricklet-rescue:DRILL U2
+L tinkerforge:DRILL U2
 U 1 1 5B633FCA
 P 10750 6200
 F 0 "U2" H 10800 6250 60  0001 C CNN
@@ -711,8 +707,6 @@ Wire Wire Line
 Wire Wire Line
 	9250 2100 9750 2100
 Wire Wire Line
-	9100 2950 9250 2950
-Wire Wire Line
 	2750 5500 3600 5500
 $Comp
 L tinkerforge:JST_GHR_6 P4
@@ -732,4 +726,6 @@ Wire Wire Line
 Connection ~ 9650 2450
 Wire Wire Line
 	9650 2450 9650 2650
+Wire Wire Line
+	8950 2950 9250 2950
 $EndSCHEMATC
