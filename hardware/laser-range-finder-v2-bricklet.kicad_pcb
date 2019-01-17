@@ -74,7 +74,7 @@
     (grid_origin 130.875 104.4)
     (visible_elements FFFFFFFF)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
+      (layerselection 0x010fc_ffffffff)
       (usegerberextensions true)
       (usegerberattributes false)
       (usegerberadvancedattributes false)
@@ -99,7 +99,7 @@
       (mirror false)
       (drillshape 0)
       (scaleselection 1)
-      (outputdirectory "/tmp/"))
+      (outputdirectory "pcb"))
   )
 
   (net 0 "")
@@ -7034,7 +7034,7 @@
   (segment (start 142.0759 101.04888) (end 142.07702 101.05) (width 0.2) (layer Vorderseite) (net 41))
   (segment (start 142.07702 101.05) (end 143.4 101.05) (width 0.2) (layer Vorderseite) (net 41) (tstamp 5B6AD77E))
 
-  (zone (net 1) (net_name GND) (layer Rückseite) (tstamp 5B6D3835) (hatch edge 0.508)
+  (zone (net 1) (net_name GND) (layer Rückseite) (tstamp 5B8E6C8D) (hatch edge 0.508)
     (connect_pads (clearance 0.2))
     (min_thickness 0.15)
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
