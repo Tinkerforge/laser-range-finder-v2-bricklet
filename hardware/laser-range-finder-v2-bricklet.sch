@@ -728,5 +728,8 @@ Connection ~ 9650 2450
 Wire Wire Line
 	9650 2450 9650 2650
 Wire Wire Line
-	8950 2950 9250 2950
+	8950 2950 9100 2950
+Connection ~ 9100 2950
+Wire Wire Line
+	9100 2950 9250 2950
 $EndSCHEMATC
