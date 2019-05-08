@@ -40,6 +40,11 @@ void communication_init(void);
 #define LASER_RANGE_FINDER_V2_THRESHOLD_OPTION_SMALLER '<'
 #define LASER_RANGE_FINDER_V2_THRESHOLD_OPTION_GREATER '>'
 
+#define LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_OFF 0
+#define LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_ON 1
+#define LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_HEARTBEAT 2
+#define LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE 3
+
 #define LASER_RANGE_FINDER_V2_BOOTLOADER_MODE_BOOTLOADER 0
 #define LASER_RANGE_FINDER_V2_BOOTLOADER_MODE_FIRMWARE 1
 #define LASER_RANGE_FINDER_V2_BOOTLOADER_MODE_BOOTLOADER_WAIT_FOR_REBOOT 2
@@ -73,6 +78,8 @@ void communication_init(void);
 #define FID_GET_MOVING_AVERAGE 14
 #define FID_SET_OFFSET_CALIBRATION 15
 #define FID_GET_OFFSET_CALIBRATION 16
+#define FID_SET_DISTANCE_LED_CONFIG 17
+#define FID_GET_DISTANCE_LED_CONFIG 18
 
 #define FID_CALLBACK_DISTANCE 4
 #define FID_CALLBACK_VELOCITY 8
@@ -141,6 +148,20 @@ typedef struct {
 	int16_t offset;
 } __attribute__((__packed__)) GetOffsetCalibration_Response;
 
+typedef struct {
+	TFPMessageHeader header;
+	uint8_t config;
+} __attribute__((__packed__)) SetDistanceLEDConfig;
+
+typedef struct {
+	TFPMessageHeader header;
+} __attribute__((__packed__)) GetDistanceLEDConfig;
+
+typedef struct {
+	TFPMessageHeader header;
+	uint8_t config;
+} __attribute__((__packed__)) GetDistanceLEDConfig_Response;
+
 
 // Function prototypes
 BootloaderHandleMessageResponse set_enable(const SetEnable *data);
@@ -151,6 +172,8 @@ BootloaderHandleMessageResponse set_moving_average(const SetMovingAverage *data)
 BootloaderHandleMessageResponse get_moving_average(const GetMovingAverage *data, GetMovingAverage_Response *response);
 BootloaderHandleMessageResponse set_offset_calibration(const SetOffsetCalibration *data);
 BootloaderHandleMessageResponse get_offset_calibration(const GetOffsetCalibration *data, GetOffsetCalibration_Response *response);
+BootloaderHandleMessageResponse set_distance_led_config(const SetDistanceLEDConfig *data);
+BootloaderHandleMessageResponse get_distance_led_config(const GetDistanceLEDConfig *data, GetDistanceLEDConfig_Response *response);
 
 // Callbacks
 bool handle_distance_callback(void);

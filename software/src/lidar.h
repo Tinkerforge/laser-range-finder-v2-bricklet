@@ -89,6 +89,8 @@ typedef struct {
 	uint8_t moving_average_length_velocity;
 
 	int16_t offset;
+
+	LEDFlickerState led;
 } Lidar;
 
 extern Lidar lidar;

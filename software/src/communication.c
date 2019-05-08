@@ -29,6 +29,7 @@
 CallbackValue_int16_t callback_value_velocity;
 CallbackValue_int16_t callback_value_distance;
 
+#include "configs/config_lidar.h"
 #include "lidar.h"
 
 BootloaderHandleMessageResponse handle_message(const void *message, void *response) {
@@ -113,6 +114,53 @@ BootloaderHandleMessageResponse set_offset_calibration(const SetOffsetCalibratio
 BootloaderHandleMessageResponse get_offset_calibration(const GetOffsetCalibration *data, GetOffsetCalibration_Response *response) {
 	response->header.length = sizeof(GetOffsetCalibration_Response);
 	response->offset        = lidar.offset;
+
+	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
+}
+
+BootloaderHandleMessageResponse set_distance_led_config(const SetDistanceLEDConfig *data) {
+	if(data->config > LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	XMC_GPIO_CONFIG_t config_gpio = {
+		.mode             = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+	};
+
+	XMC_GPIO_CONFIG_t config_pwm = {
+		.mode             = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT2,
+		.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD,
+		.output_level     = XMC_GPIO_OUTPUT_LEVEL_LOW,
+	};
+
+	switch(data->config) {
+		case LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_OFF: {
+			config_gpio.output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH;
+			XMC_GPIO_Init(LIDAR_LED_PIN, &config_gpio);
+			break;
+		}
+
+		case LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_ON: // fall-through
+		case LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_HEARTBEAT: {
+			config_gpio.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
+			XMC_GPIO_Init(LIDAR_LED_PIN, &config_gpio);
+			break;
+		}
+
+		case LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE: {
+			XMC_GPIO_Init(LIDAR_LED_PIN, &config_pwm);
+			break;
+		}
+	}
+
+	lidar.led.config = data->config;
+
+	return HANDLE_MESSAGE_RESPONSE_EMPTY;
+}
+
+BootloaderHandleMessageResponse get_distance_led_config(const GetDistanceLEDConfig *data, GetDistanceLEDConfig_Response *response) {
+	response->header.length = sizeof(GetDistanceLEDConfig_Response);
+	response->config        = lidar.led.config;
 
 	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;
 }

@@ -48,5 +48,7 @@
 
 
 #define LIDAR_ENABLE_PIN           P2_1
+#define LIDAR_LED_PIN              P1_0
+#define LIDAR_LED_CCU4_SLICE       0
 
 #endif

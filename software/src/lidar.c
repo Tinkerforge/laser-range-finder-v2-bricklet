@@ -25,9 +25,13 @@
 
 #include "bricklib2/os/coop_task.h"
 #include "bricklib2/hal/i2c_fifo/i2c_fifo.h"
+#include "bricklib2/hal/ccu4_pwm/ccu4_pwm.h"
+#include "bricklib2/hal/system_timer/system_timer.h"
 
 #include "bricklib2/utility/util_definitions.h"
 #include "bricklib2/bootloader/bootloader.h"
+
+#include "communication.h"
 
 #define LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH 10
 #define LIDAR_OFFSET_DEFAULT -9
@@ -136,9 +140,8 @@ void lidar_task_tick(void) {
 				if((distance & (1 << 15)) != (1 << 15)) { // If the MSB is 1 then the reading is not considered valid
 					distance = MAX(0, distance + lidar.offset);
 					lidar_task_read_registers(LIDAR_REG_VELOCITY, 1, data);
-					if(true || ABS((int8_t)data[0]) > 9) {
-						velocity = (((int8_t)data[0]) - lidar.offset)*lidar.measurement_frequency;
-					}
+					velocity = (((int8_t)data[0]) - lidar.offset)*lidar.measurement_frequency;
+
 					if(lidar.first_value) {
 						lidar.first_value = false;
 						lidar.distance = distance;
@@ -190,10 +193,12 @@ void lidar_init_i2c(void) {
 	lidar.measurement_frequency = 0;
 	lidar.moving_average_length_distance = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
 	lidar.moving_average_length_velocity = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
+	lidar.led.config = LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE;
 			
 	lidar.new_configuration = true;
 	lidar.first_value = true;
 
+	ccu4_pwm_init(LIDAR_LED_PIN, LIDAR_LED_CCU4_SLICE, 255);
 	lidar_read_calibration();
 }
 
@@ -204,6 +209,12 @@ void lidar_init(void) {
 }
 
 void lidar_tick(void) {
+	if(lidar.led.config == LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE) {
+		ccu4_pwm_set_duty_cycle(LIDAR_LED_CCU4_SLICE, 255-BETWEEN(0, SCALE(lidar_get_distance(), 30, 100, 0, 255), 255));
+	} else {
+		led_flicker_tick(&lidar.led, system_timer_get_ms(), LIDAR_LED_PIN);
+	}
+
 	coop_task_tick(&lidar_task);
 }
 
