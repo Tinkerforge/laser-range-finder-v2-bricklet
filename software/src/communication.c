@@ -54,7 +54,9 @@ BootloaderHandleMessageResponse handle_message(const void *message, void *respon
 
 
 BootloaderHandleMessageResponse set_enable(const SetEnable *data) {
-	lidar.enable_laser = data->enable;
+	lidar.enable_laser      = data->enable;
+	lidar.new_enable_laser  = true;
+	lidar.new_configuration = true;
 
 	return HANDLE_MESSAGE_RESPONSE_EMPTY;
 }

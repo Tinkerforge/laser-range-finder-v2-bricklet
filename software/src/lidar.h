@@ -74,6 +74,7 @@ typedef struct {
 	bool new_calibration;
     bool new_configuration;
 	bool enable_laser;
+	bool new_enable_laser;
 
 	uint8_t acquisition_count;
 	bool enable_quick_termination;

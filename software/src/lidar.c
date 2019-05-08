@@ -83,31 +83,34 @@ uint32_t lidar_task_write_register(const uint8_t reg, uint8_t data) {
 }
 
 void lidar_task_tick(void) {
-	XMC_GPIO_CONFIG_t output_high = {
-		.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
-		.output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
-	};
-
-	XMC_GPIO_CONFIG_t output_low = {
-		.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
-		.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW
-	};
-
-	XMC_GPIO_Init(LIDAR_ENABLE_PIN, &output_low);
-	coop_task_sleep_ms(100);
-	XMC_GPIO_Init(LIDAR_ENABLE_PIN, &output_high);
-	coop_task_sleep_ms(200);
-	lidar_task_write_register(LIDAR_REG_ACQ_COMMAND,      0x00); // reset
-	coop_task_sleep_ms(200);
-
-	lidar_task_write_register(LIDAR_REG_OUTER_LOOP_COUNT, 0xFF); // continuous measurement
-	lidar_task_write_register(LIDAR_REG_ACQ_COMMAND,      0x04); // start measurement
-
 	uint8_t data[2];
+
 	while(true) {
 		if(lidar.new_calibration) {
 			lidar.new_calibration = false;
 			lidar_write_calibration();
+		}
+
+		if(lidar.new_enable_laser) {
+			lidar.new_enable_laser = false;
+			if(lidar.enable_laser) {
+				XMC_GPIO_CONFIG_t output_high = {
+					.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+					.output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH
+				};
+				XMC_GPIO_Init(LIDAR_ENABLE_PIN, &output_high);
+				coop_task_sleep_ms(200);
+
+				lidar_task_write_register(LIDAR_REG_OUTER_LOOP_COUNT, 0xFF); // continuous measurement
+				lidar_task_write_register(LIDAR_REG_ACQ_COMMAND,      0x04); // start measurement
+			} else {
+				XMC_GPIO_CONFIG_t output_low = {
+					.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+					.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW
+				};
+				XMC_GPIO_Init(LIDAR_ENABLE_PIN, &output_low);
+				coop_task_sleep_ms(100);
+			}
 		}
 
 		if(lidar.enable_laser) {
@@ -194,8 +197,9 @@ void lidar_init_i2c(void) {
 	lidar.moving_average_length_distance = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
 	lidar.moving_average_length_velocity = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
 	lidar.led.config = LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE;
-			
-	lidar.new_configuration = true;
+
+	lidar.new_configuration = false;
+	lidar.new_enable_laser  = false;
 	lidar.first_value = true;
 
 	ccu4_pwm_init(LIDAR_LED_PIN, LIDAR_LED_CCU4_SLICE, 255);
@@ -203,6 +207,12 @@ void lidar_init_i2c(void) {
 }
 
 void lidar_init(void) {
+	XMC_GPIO_CONFIG_t output_low = {
+		.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+		.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW
+	};
+	XMC_GPIO_Init(LIDAR_ENABLE_PIN, &output_low);
+
 	lidar_init_i2c();
 
 	coop_task_init(&lidar_task, lidar_task_tick);	
@@ -210,7 +220,12 @@ void lidar_init(void) {
 
 void lidar_tick(void) {
 	if(lidar.led.config == LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE) {
-		ccu4_pwm_set_duty_cycle(LIDAR_LED_CCU4_SLICE, 255-BETWEEN(0, SCALE(lidar_get_distance(), 30, 100, 0, 255), 255));
+		int16_t distance = lidar_get_distance();
+		if(distance == 0) {
+			ccu4_pwm_set_duty_cycle(LIDAR_LED_CCU4_SLICE, 0);
+		} else {
+			ccu4_pwm_set_duty_cycle(LIDAR_LED_CCU4_SLICE, 255-BETWEEN(0, SCALE(distance, 30, 100, 0, 255), 255));
+		}
 	} else {
 		led_flicker_tick(&lidar.led, system_timer_get_ms(), LIDAR_LED_PIN);
 	}
@@ -219,9 +234,17 @@ void lidar_tick(void) {
 }
 
 int16_t lidar_get_velocity(void) {
+	if(!lidar.enable_laser) {
+		return 0;
+	}
+
 	return lidar.velocity;
 }
 
 int16_t lidar_get_distance(void) {
+	if(!lidar.enable_laser) {
+		return 0;
+	}
+
 	return lidar.distance;
 }
