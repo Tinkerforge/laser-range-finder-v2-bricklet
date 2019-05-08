@@ -69,6 +69,14 @@ BootloaderHandleMessageResponse get_enable(const GetEnable *data, GetEnable_Resp
 }
 
 BootloaderHandleMessageResponse set_configuration(const SetConfiguration *data) {
+	if(data->acquisition_count < 1) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
+	if(((data->measurement_frequency != 0) && (data->measurement_frequency < 10)) || (data->measurement_frequency > 500)) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+
 	lidar.acquisition_count        = data->acquisition_count;
 	lidar.enable_quick_termination = data->enable_quick_termination;
 	lidar.threshold_value          = data->threshold_value;
