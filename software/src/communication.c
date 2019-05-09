@@ -48,6 +48,8 @@ BootloaderHandleMessageResponse handle_message(const void *message, void *respon
 		case FID_GET_MOVING_AVERAGE: return get_moving_average(message, response);
 		case FID_SET_OFFSET_CALIBRATION: return set_offset_calibration(message);
 		case FID_GET_OFFSET_CALIBRATION: return get_offset_calibration(message, response);
+		case FID_SET_DISTANCE_LED_CONFIG: return set_distance_led_config(message);
+		case FID_GET_DISTANCE_LED_CONFIG: return get_distance_led_config(message, response);
 		default: return HANDLE_MESSAGE_RESPONSE_NOT_SUPPORTED;
 	}
 }
