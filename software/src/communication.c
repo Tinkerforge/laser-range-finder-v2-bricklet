@@ -117,6 +117,11 @@ BootloaderHandleMessageResponse get_moving_average(const GetMovingAverage *data,
 }
 
 BootloaderHandleMessageResponse set_offset_calibration(const SetOffsetCalibration *data) {
+	//Don't allow offsets that would overflow the distance calculation.
+	if(data->offset > INT16_MAX - 4000) {
+		return HANDLE_MESSAGE_RESPONSE_INVALID_PARAMETER;
+	}
+	
 	lidar.offset          = data->offset;
 	lidar.new_calibration = true;
 
