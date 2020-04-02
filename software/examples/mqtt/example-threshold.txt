@@ -1,0 +1,20 @@
+# Change XYZ to the UID of your Laser Range Finder Bricklet 2.0
+
+setup:
+	# Turn laser on and wait 250ms for very first measurement to be ready
+	publish '{"enable": true}' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/set_enable
+
+	wait for 0.25s
+
+	# Handle incoming distance callbacks
+	subscribe to tinkerforge/callback/laser_range_finder_v2_bricklet/XYZ/distance
+	publish '{"register": true}' to tinkerforge/register/laser_range_finder_v2_bricklet/XYZ/distance # Register distance callback
+
+	# Configure threshold for distance "greater than 20 cm"
+	# with a debounce period of 1s (1000ms)
+	publish '{"period": 1000, "value_has_to_change": false, "option": "greater", "min": 20, "max": 0}' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/set_distance_callback_configuration
+
+cleanup:
+	# If you are done, run this to clean up
+	# Turn laser off
+	publish '{"enable": false}' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/set_enable

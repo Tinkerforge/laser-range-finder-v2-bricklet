@@ -1,0 +1,16 @@
+# Change XYZ to the UID of your Laser Range Finder Bricklet 2.0
+
+setup:
+	# Turn laser on and wait 250ms for very first measurement to be ready
+	publish '{"enable": true}' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/set_enable
+
+	wait for 0.25s
+
+	# Get current distance
+	subscribe to tinkerforge/response/laser_range_finder_v2_bricklet/XYZ/get_distance
+	publish '' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/get_distance
+
+cleanup:
+	# If you are done, run this to clean up
+	# Turn laser off
+	publish '{"enable": false}' to tinkerforge/request/laser_range_finder_v2_bricklet/XYZ/set_enable

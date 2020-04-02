@@ -1,0 +1,25 @@
+Needs["NETLink`"]
+LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
+
+host="localhost"
+port=4223
+uid="XYZ"(*Change XYZ to the UID of your Laser Range Finder Bricklet 2.0*)
+
+(*Create IPConnection and device object*)
+ipcon=NETNew["Tinkerforge.IPConnection"]
+lrf=NETNew["Tinkerforge.BrickletLaserRangeFinderV2",uid,ipcon]
+ipcon@Connect[host,port]
+
+(*Turn laser on and wait 250ms for very first measurement to be ready*)
+lrf@SetEnable[True]
+Pause[0.25]
+
+(*Get current distance*)
+Print["Distance: "<>ToString[N[Quantity[lrf@GetDistance[],"cm"]]]]
+
+(*Turn laser off*)
+lrf@SetEnable[False]
+
+ipcon@Disconnect[]
+ReleaseNETObject[lrf]
+ReleaseNETObject[ipcon]

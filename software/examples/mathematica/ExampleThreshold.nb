@@ -1,0 +1,49 @@
+Notebook[{
+ Cell[
+  BoxData[{
+   RowBox[{"Needs", "[", "\"\<NETLink`\>\"", "]"}],
+   RowBox[{"LoadNETAssembly", "[", RowBox[{"\"\<Tinkerforge\>\"", ",", RowBox[{RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<../../..\>\""}]}], "]"}]
+  }], "Input"
+ ],
+ Cell[
+  BoxData[{
+   RowBox[{"host", "=", "\"\<localhost\>\""}],
+   RowBox[{"port", "=", "4223"}],
+   RowBox[{"uid", "=", "\"\<XYZ\>\"", RowBox[{"(*", "Change XYZ to the UID of your Laser Range Finder Bricklet 2.0", "*)"}]}],
+   RowBox[{"
+"}],
+   RowBox[{"(*", "Create IPConnection and device object", "*)"}],
+   RowBox[{"ipcon", "=", RowBox[{"NETNew", "[", "\"\<Tinkerforge.IPConnection\>\"", "]"}]}],
+   RowBox[{"lrf", "=", RowBox[{"NETNew", "[", RowBox[{"\"\<Tinkerforge.BrickletLaserRangeFinderV2\>\"", ",", "uid", ",", "ipcon"}], "]"}]}],
+   RowBox[{"ipcon", "@", RowBox[{"Connect", "[", RowBox[{"host", ",", "port"}], "]"}]}],
+   RowBox[{"
+"}],
+   RowBox[{"(*", "Turn laser on and wait 250ms for very first measurement to be ready", "*)"}],
+   RowBox[{"lrf", "@", RowBox[{"SetEnable", "[", "True", "]"}]}],
+   RowBox[{"Pause", "[", "0.25", "]"}],
+   RowBox[{"
+"}],
+   RowBox[{"(*", "Callback function for distance callback", "*)"}],
+   RowBox[{RowBox[{"DistanceCB", "[", RowBox[{"sender_", ",", "distance_"}], "]"}], ":=", "\[IndentingNewLine]", RowBox[{"Print", "[", RowBox[{"\"\<Distance: \>\"", "<>", RowBox[{"ToString", "[", RowBox[{"N", "[", RowBox[{"Quantity", "[", RowBox[{"distance", ",", "\"\<cm\>\""}], "]"}], "]"}], "]"}]}], "]"}]}],
+   RowBox[{"AddEventHandler", "[", RowBox[{RowBox[{"lrf", "@", "DistanceCallback"}], ",", "DistanceCB"}], "]"}],
+   RowBox[{"
+"}],
+   RowBox[{"(*", "Configure threshold for distance ", "\"\<greater than 20 cm\>\"", "", "*)"}],
+   RowBox[{"(*", "with a debounce period of 1s (1000ms)", "*)"}],
+   RowBox[{"option", "=", "Tinkerforge`BrickletLaserRangeFinderV2`THRESHOLDUOPTIONUGREATER"}],
+   RowBox[{"lrf", "@", RowBox[{"SetDistanceCallbackConfiguration", "[", RowBox[{"1000", ",", "False", ",", "option", ",", "20", ",", "0"}], "]"}]}],
+   RowBox[{"
+"}],
+   RowBox[{"Input", "[", "\"\<Click OK to exit\>\"", "]"}],
+   RowBox[{"
+"}],
+   RowBox[{"(*", "Turn laser off", "*)"}],
+   RowBox[{"lrf", "@", RowBox[{"SetEnable", "[", "False", "]"}]}],
+   RowBox[{"
+"}],
+   RowBox[{"ipcon", "@", RowBox[{"Disconnect", "[", "]"}]}],
+   RowBox[{"ReleaseNETObject", "[", "lrf", "]"}],
+   RowBox[{"ReleaseNETObject", "[", "ipcon", "]"}]
+  }], "Input"
+ ]
+}]
