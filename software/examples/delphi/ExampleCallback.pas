@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     lrf: TBrickletLaserRangeFinderV2;
   public
-    procedure DistanceCB(sender: TBrickletLaserRangeFinderV2; const distance: word);
+    procedure DistanceCB(sender: TBrickletLaserRangeFinderV2; const distance: smallint);
     procedure Execute;
   end;
 
@@ -25,7 +25,8 @@ var
   e: TExample;
 
 { Callback procedure for distance callback }
-procedure TExample.DistanceCB(sender: TBrickletLaserRangeFinderV2; const distance: word);
+procedure TExample.DistanceCB(sender: TBrickletLaserRangeFinderV2;
+                              const distance: smallint);
 begin
   WriteLn(Format('Distance: %d cm', [distance]));
 end;

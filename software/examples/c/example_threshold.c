@@ -10,10 +10,10 @@
 #define UID "XYZ" // Change XYZ to the UID of your Laser Range Finder Bricklet 2.0
 
 // Callback function for distance callback
-void cb_distance(uint16_t distance, void *user_data) {
+void cb_distance(int16_t distance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Distance: %u cm\n", distance);
+	printf("Distance: %d cm\n", distance);
 }
 
 int main(void) {

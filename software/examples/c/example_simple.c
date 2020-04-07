@@ -30,13 +30,13 @@ int main(void) {
 	millisleep(250);
 
 	// Get current distance
-	uint16_t distance;
+	int16_t distance;
 	if(laser_range_finder_v2_get_distance(&lrf, &distance) < 0) {
 		fprintf(stderr, "Could not get distance, probably timeout\n");
 		return 1;
 	}
 
-	printf("Distance: %u cm\n", distance);
+	printf("Distance: %d cm\n", distance);
 
 	printf("Press key to exit\n");
 	getchar();

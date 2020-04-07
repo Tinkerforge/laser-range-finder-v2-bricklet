@@ -22,7 +22,7 @@ class Example
 		Thread.Sleep(250);
 
 		// Get current distance
-		int distance = lrf.GetDistance();
+		short distance = lrf.GetDistance();
 		Console.WriteLine("Distance: " + distance + " cm");
 
 		Console.WriteLine("Press enter to exit");

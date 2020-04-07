@@ -23,7 +23,7 @@ func main() {
 	lrf.SetEnable(true)
 	time.Sleep(250 * time.Millisecond)
 
-	lrf.RegisterDistanceCallback(func(distance uint16) {
+	lrf.RegisterDistanceCallback(func(distance int16) {
 		fmt.Printf("Distance: %d cm\n", distance)
 	})
 

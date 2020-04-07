@@ -19,7 +19,7 @@ Module ExampleSimple
         Thread.Sleep(250)
 
         ' Get current distance
-        Dim distance As Integer = lrf.GetDistance()
+        Dim distance As Short = lrf.GetDistance()
         Console.WriteLine("Distance: " + distance.ToString() + " cm")
 
         Console.WriteLine("Press key to exit")
