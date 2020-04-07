@@ -13,7 +13,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                                           // Don't use device before ipcon is connected.
 
     // Turn laser on and wait 250ms for very first measurement to be ready
-    lrf.set_enable(true);
+    lrf.set_enable(true).recv()?;
     thread::sleep(Duration::from_millis(250));
 
     let distance_receiver = lrf.get_distance_callback_receiver();
@@ -35,7 +35,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     io::stdin().read_line(&mut _input)?;
 
     // Turn laser off
-    lrf.set_enable(false);
+    lrf.set_enable(false).recv()?;
 
     ipcon.disconnect();
     Ok(())
