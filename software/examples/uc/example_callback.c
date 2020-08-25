@@ -1,5 +1,3 @@
-
-
 #include "bindings/hal_common.h"
 #include "bindings/bricklet_laser_range_finder_v2.h"
 
@@ -7,15 +5,12 @@
 
 void check(int rc, const char* msg);
 
-
-
 // Callback function for distance callback
 void distance_handler(TF_LaserRangeFinderV2 *device, int16_t distance, void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
 	tf_hal_printf("Distance: %d cm\n", distance);
 }
-
 
 TF_LaserRangeFinderV2 lrf;
 
