@@ -18,20 +18,18 @@ void example_setup(TF_HalContext *hal) {
 	// Create device object
 	check(tf_laser_range_finder_v2_create(&lrf, UID, hal), "create device object");
 
-
 	// Turn laser on and wait 250ms for very first measurement to be ready
 	check(tf_laser_range_finder_v2_set_enable(&lrf, true), "call set_enable");
 	tf_hal_sleep_us(hal, 250 * 1000);
 
 	// Register distance callback to function distance_handler
 	tf_laser_range_finder_v2_register_distance_callback(&lrf,
-	                                                   distance_handler,
-	                                                   NULL);
+	                                                    distance_handler,
+	                                                    NULL);
 
 	// Configure threshold for distance "greater than 20 cm"
 	// with a debounce period of 1s (1000ms)
 	tf_laser_range_finder_v2_set_distance_callback_configuration(&lrf, 1000, false, '>', 20, 0);
-
 }
 
 void example_loop(TF_HalContext *hal) {
