@@ -5,14 +5,19 @@
 
 void check(int rc, const char* msg);
 
+void example_setup(TF_HalContext *hal);
+void example_loop(TF_HalContext *hal);
+
+
 // Callback function for distance callback
-void distance_handler(TF_LaserRangeFinderV2 *device, int16_t distance, void *user_data) {
+static void distance_handler(TF_LaserRangeFinderV2 *device, int16_t distance,
+                             void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
 	tf_hal_printf("Distance: %d cm\n", distance);
 }
 
-TF_LaserRangeFinderV2 lrf;
+static TF_LaserRangeFinderV2 lrf;
 
 void example_setup(TF_HalContext *hal) {
 	// Create device object
