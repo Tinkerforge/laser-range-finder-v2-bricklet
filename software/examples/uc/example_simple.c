@@ -23,7 +23,7 @@ void example_setup(TF_HalContext *hal) {
 	int16_t distance;
 	check(tf_laser_range_finder_v2_get_distance(&lrf, &distance), "get distance");
 
-	tf_hal_printf("Distance: %d cm\n", distance);
+	tf_hal_printf("Distance: %I16d cm\n", distance);
 }
 
 void example_loop(TF_HalContext *hal) {

@@ -14,7 +14,7 @@ static void distance_handler(TF_LaserRangeFinderV2 *device, int16_t distance,
                              void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
-	tf_hal_printf("Distance: %d cm\n", distance);
+	tf_hal_printf("Distance: %I16d cm\n", distance);
 }
 
 static TF_LaserRangeFinderV2 lrf;
