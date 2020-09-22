@@ -3,3 +3,7 @@
 
 2019-05-29: 2.0.1 (d8920c1)
 - Fix SPITFP IRQ race condition with other higher prio IRQs (through bricklib2)
+
+2020-09-22: 2.0.2 (TBD)
+- Fix bug in invalid reading detection
+- Fix wrong quick termination default value
