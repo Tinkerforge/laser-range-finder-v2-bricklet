@@ -140,7 +140,9 @@ void lidar_task_tick(void) {
 				lidar_task_read_registers(LIDAR_REG_FULL_DELAY_HIGH, 2, data);
 				uint16_t distance = (data[0] << 8) | data[1];
 				int16_t  velocity = 0;
-				if((distance & (1 << 15)) != (1 << 15)) { // If the MSB is 1 then the reading is not considered valid
+				// According to datasheet a distance of 1cm is invalid.
+				// In our tests we found that sometimes it also shows 2cm or 3cm...
+				if(distance > 4) {
 					distance = MAX(0, distance + lidar.offset);
 					lidar_task_read_registers(LIDAR_REG_VELOCITY, 1, data);
 					velocity = (((int8_t)data[0]) - lidar.offset)*lidar.measurement_frequency;
