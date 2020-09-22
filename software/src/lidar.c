@@ -193,14 +193,14 @@ void lidar_init_i2c(void) {
 
 	lidar.enable_laser = false;
 	lidar.acquisition_count = 0x80;
-	lidar.enable_quick_termination = true;
+	lidar.enable_quick_termination = false;
 	lidar.threshold_value = 0;
 	lidar.measurement_frequency = 0;
 	lidar.moving_average_length_distance = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
 	lidar.moving_average_length_velocity = LIDAR_MOVING_AVERAGE_DEFAULT_LENGTH;
 	lidar.led.config = LASER_RANGE_FINDER_V2_DISTANCE_LED_CONFIG_SHOW_DISTANCE;
 
-	lidar.new_configuration = false;
+	lidar.new_configuration = true;
 	lidar.new_enable_laser  = false;
 	lidar.first_value = true;
 
