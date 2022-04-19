@@ -9,8 +9,8 @@
 
 void check(int rc, const char* msg);
 
-void example_setup(TF_HalContext *hal);
-void example_loop(TF_HalContext *hal);
+void example_setup(TF_HAL *hal);
+void example_loop(TF_HAL *hal);
 
 
 // Callback function for distance callback
@@ -23,7 +23,7 @@ static void distance_handler(TF_LaserRangeFinderV2 *device, int16_t distance,
 
 static TF_LaserRangeFinderV2 lrf;
 
-void example_setup(TF_HalContext *hal) {
+void example_setup(TF_HAL *hal) {
 	// Create device object
 	check(tf_laser_range_finder_v2_create(&lrf, UID, hal), "create device object");
 
@@ -40,7 +40,7 @@ void example_setup(TF_HalContext *hal) {
 	tf_laser_range_finder_v2_set_distance_callback_configuration(&lrf, 200, false, 'x', 0, 0);
 }
 
-void example_loop(TF_HalContext *hal) {
+void example_loop(TF_HAL *hal) {
 	// Poll for callbacks
 	tf_hal_callback_tick(hal, 0);
 }
