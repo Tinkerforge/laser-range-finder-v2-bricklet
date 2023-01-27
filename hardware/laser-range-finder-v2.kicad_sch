@@ -6,11 +6,11 @@
 
   (title_block
     (title "Laser Range Finder Bricklet 2.0")
-    (date "2018-09-04")
+    (date "2023-01-27")
     (rev "2.0")
     (company "Tinkerforge GmbH")
     (comment 1 "Licensed under CERN OHL v.1.1")
-    (comment 2 "Copyright (©) 2018, T.Schneidermann <tim@tinkerforge.com>")
+    (comment 2 "Copyright (©) 2023, T.Schneidermann <tim@tinkerforge.com>")
   )
 
   (lib_symbols
@@ -1248,7 +1248,7 @@
     (uuid fd2af530-f202-42ae-8f96-ae7c934ad23d)
   )
 
-  (text "Copyright Tinkerforge GmbH 2018.\nThis documentation describes Open Hardware and is licensed under the\nCERN OHL v. 1.1.\nYou may redistribute and modify this documentation under the terms of the\nCERN OHL v.1.1. (http://ohwr.org/cernohl). This documentation is distributed\nWITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF\nMERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A\nPARTICULAR PURPOSE. Please see the CERN OHL v.1.1 for applicable\nconditions\n"
+  (text "Copyright Tinkerforge GmbH 2023.\nThis documentation describes Open Hardware and is licensed under the\nCERN OHL v. 1.1.\nYou may redistribute and modify this documentation under the terms of the\nCERN OHL v.1.1. (http://ohwr.org/cernohl). This documentation is distributed\nWITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF\nMERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A\nPARTICULAR PURPOSE. Please see the CERN OHL v.1.1 for applicable\nconditions\n"
     (at 13.97 196.85 0)
     (effects (font (size 1.016 1.016)) (justify left bottom))
     (uuid 715df17a-257a-4513-872a-5f7a10d92745)
